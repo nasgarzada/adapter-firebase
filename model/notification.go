@@ -8,7 +8,15 @@ type Notification struct {
 }
 
 type DataField struct {
-	NotificationType string            `json:"notificationType"`
+	NotificationType NotificationType  `json:"notificationType"`
 	ImageUrl         *string           `json:"imageUrl"`
 	Payload          map[string]string `json:"payload"`
 }
+
+type NotificationType string
+
+const (
+	Payment  NotificationType = "PAYMENT"
+	Accounts NotificationType = "ACCOUNTS"
+	Holiday  NotificationType = "HOLIDAY"
+)
