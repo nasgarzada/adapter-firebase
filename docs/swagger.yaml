@@ -1,0 +1,14 @@
+info:
+  contact: {}
+paths:
+  /health:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+      summary: Health endpoint for kubernetes health and readiness check
+      tags:
+      - health-handler
+swagger: "2.0"
