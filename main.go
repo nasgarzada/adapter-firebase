@@ -6,6 +6,7 @@ import (
 	"github.com/nasgarzada/adapter-firebase/handler"
 	"github.com/nasgarzada/adapter-firebase/queue"
 	"github.com/nasgarzada/adapter-firebase/service"
+	"github.com/nasgarzada/adapter-firebase/util"
 	log "github.com/sirupsen/logrus"
 	"github.com/streadway/amqp"
 	"net/http"
@@ -14,6 +15,10 @@ import (
 
 func main() {
 	config.LoadConfig()
+
+	if err := util.CreateFirebaseConfigFile(); err != nil {
+		panic("Couldn't create config file")
+	}
 
 	router := chi.NewRouter()
 

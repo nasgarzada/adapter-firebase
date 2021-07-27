@@ -10,15 +10,25 @@ import (
 )
 
 type args struct {
-	LogLevel           string `arg:"env:LOG_LEVEL"`
-	Port               int    `arg:"env:PORT"`
-	RabbitMqHost       string `arg:"env:RABBITMQ_HOST"`
-	RabbitMqPort       string `arg:"env:RABBITMQ_PORT"`
-	RabbitMqUser       string `arg:"env:RABBITMQ_USER"`
-	RabbitMqPass       string `arg:"env:RABBITMQ_PASS"`
-	FirebaseQueue      string `arg:"env:FIREBASE_NOTIFICATION_QUEUE"`
-	FirebaseDLQ        string `arg:"env:FIREBASE_NOTIFICATION_DLQ"`
-	FirebaseConfigPath string `arg:"env:FIREBASE_CONFIG_PATH"`
+	LogLevel                string `arg:"env:LOG_LEVEL"`
+	Port                    int    `arg:"env:PORT"`
+	RabbitMqHost            string `arg:"env:RABBITMQ_HOST"`
+	RabbitMqPort            string `arg:"env:RABBITMQ_PORT"`
+	RabbitMqUser            string `arg:"env:RABBITMQ_USER"`
+	RabbitMqPass            string `arg:"env:RABBITMQ_PASS"`
+	FirebaseQueue           string `arg:"env:FIREBASE_NOTIFICATION_QUEUE"`
+	FirebaseDLQ             string `arg:"env:FIREBASE_NOTIFICATION_DLQ"`
+	FirebaseConfigPath      string `arg:"env:FIREBASE_CONFIG_PATH"`
+	Type                    string `arg:"env:TYPE"`
+	ProjectId               string `arg:"env:PROJECT_ID"`
+	PrivateKeyId            string `arg:"env:PRIVATE_KEY_ID"`
+	PrivateKey              string `arg:"env:PRIVATE_KEY"`
+	ClientEmail             string `arg:"env:CLIENT_EMAIL"`
+	ClientId                string `arg:"env:CLIENT_ID"`
+	AuthUri                 string `arg:"env:AUTH_URI"`
+	TokenUri                string `arg:"env:TOKEN_URI"`
+	AuthProviderX509CertUrl string `arg:"env:AUTH_PROVIDER_X509_CERT_URL"`
+	ClientX509CertUrl       string `arg:"env:CLIENT_X509_CERT_URL"`
 }
 
 // Props is global variable for environment variables usage

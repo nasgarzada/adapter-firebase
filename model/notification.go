@@ -8,12 +8,20 @@ type Notification struct {
 }
 
 type DataField struct {
-	NotificationType NotificationType  `json:"notificationType"`
-	ImageUrl         *string           `json:"imageUrl"`
-	Payload          map[string]string `json:"payload"`
+	NotificationGroup NotificationGroup `json:"notificationGroup"`
+	NotificationType  NotificationType  `json:"notificationType"`
+	ImageUrl          *string           `json:"imageUrl"`
+	Payload           map[string]string `json:"payload"`
 }
 
+type NotificationGroup string
 type NotificationType string
+
+const (
+	Broadcasting NotificationGroup = "BROADCASTING"
+	ByUser       NotificationGroup = "BY_USER"
+	ByCustomer   NotificationGroup = "BY_CUSTOMER"
+)
 
 const (
 	Payment  NotificationType = "PAYMENT"

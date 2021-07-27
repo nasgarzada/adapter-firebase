@@ -8,6 +8,7 @@ import (
 	"github.com/nasgarzada/adapter-firebase/model"
 	log "github.com/sirupsen/logrus"
 	"github.com/streadway/amqp"
+	"reflect"
 )
 
 type IFirebaseService interface {
@@ -36,6 +37,16 @@ func (f *FirebaseServiceImpl) SendNotification(notification *model.Notification)
 	}
 	if notification.Data != nil && notification.Data.Payload != nil {
 		multicastMessage.Data = notification.Data.Payload
+
+		notificationGroup := reflect.TypeOf(notification.Data.NotificationGroup).Name()
+		notificationType := reflect.TypeOf(notification.Data.NotificationType).Name()
+
+		multicastMessage.Data[notificationGroup] = string(notification.Data.NotificationGroup)
+		multicastMessage.Data[notificationType] = string(notification.Data.NotificationType)
+
+		if notification.Data.ImageUrl != nil {
+			multicastMessage.Data[reflect.TypeOf(notification.Data.ImageUrl).Name()] = *notification.Data.ImageUrl
+		}
 	}
 
 	batchResponse, err := firebaseMessaging.SendMulticast(context.Background(), multicastMessage)
